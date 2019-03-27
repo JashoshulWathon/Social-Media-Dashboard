@@ -1,30 +1,69 @@
 import React from 'react';
-import logo from './react.svg';
+import axios from 'axios';
 import './Home.css';
+import Info from './Components/Info';
+import CardPost from './Components/CardPost';
 
 class Home extends React.Component {
+
+  state = {
+    users: [],
+    posts: [],
+    comments: [],
+    photos: []
+  }
+
+  componentDidMount() {
+
+    axios.all([
+      axios.get(`https://jsonplaceholder.typicode.com/users`),
+      axios.get(`https://jsonplaceholder.typicode.com/posts`),
+      axios.get(`https://jsonplaceholder.typicode.com/comments`),
+      axios.get(`https://jsonplaceholder.typicode.com/photos`)
+    ])
+    .then(axios.spread((a, b, c, d) => {
+      const users = a.data;
+      const posts = b.data;
+      const comments = c.data;
+      const photos = d.data;
+      this.setState({ users, posts, comments, photos });
+      console.log('users', users);
+      console.log('posts', posts);
+      console.log('comments', comments);
+      console.log('photos', photos);
+    }));
+  }
+
+
   render() {
+    const { users, posts, comments, photos } = this.state;
+
     return (
-      <div className="Home">
-        <div className="Home-header">
-          <img src={logo} className="Home-logo" alt="logo" />
-          <h2>Welcome to Razzle</h2>
+      <div className="container">
+        <div>
+          <Info
+              value={users.length}
+              title='Total Users'
+            /> 
+          <Info
+            value={posts.length}
+            title='Total Posts'
+          /> 
+          <Info
+            value={comments.length}
+            title='Total Comments'
+          /> 
+          <Info
+            value={photos.length}
+            title='Photos Uploaded'
+          /> 
         </div>
-        <p className="Home-intro">
-          To get started, edit <code>src/App.js</code> or{' '}
-          <code>src/Home.js</code> and save to reload.
-        </p>
-        <ul className="Home-resources">
-          <li>
-            <a href="https://github.com/jaredpalmer/razzle">Docs</a>
-          </li>
-          <li>
-            <a href="https://github.com/jaredpalmer/razzle/issues">Issues</a>
-          </li>
-          <li>
-            <a href="https://palmer.chat">Community Slack</a>
-          </li>
-        </ul>
+        <div>
+          <CardPost
+            imgPost={'3'}
+            title={'3'}
+          />
+        </div>
       </div>
     );
   }
