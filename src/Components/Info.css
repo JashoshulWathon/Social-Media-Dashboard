@@ -1,0 +1,17 @@
+.totalInfo {
+  width: 100%;
+  max-width: 250px;
+  display: inline-block;
+  text-align: center;
+}
+
+.totalInfo h3 {
+  font-size: 4em;
+  margin-bottom: 10px;
+  margin-top: initial;
+  color: rgba(0, 0, 0, .75);
+}
+
+.totalInfo span {
+  color: rgba(0, 0, 0, .65);
+}

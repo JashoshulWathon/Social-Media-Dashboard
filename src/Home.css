@@ -12,3 +12,19 @@
   max-width: 1024px;
   margin: auto;
 }
+
+.f {
+  display: flex;
+}
+
+.f-btw {
+  justify-content: space-between;
+}
+
+.f-ev {
+  justify-content: space-evenly;
+}
+
+.f-ctr {
+  align-items: center;
+}

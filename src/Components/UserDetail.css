@@ -1,0 +1,19 @@
+ul {
+  list-style: none;
+  padding-left: initial;
+}
+
+ul > li {
+  margin-bottom: 25px
+}
+
+ul > li > label {
+  font-size: .9em;
+  display: inline-block;
+  padding-bottom: 7px;
+  color: rgba(0, 0, 0, .65)
+}
+
+ul > li > label + span {
+  font-size: 1.15em;
+}
