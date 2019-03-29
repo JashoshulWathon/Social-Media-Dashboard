@@ -26,11 +26,15 @@ class MyProvider extends React.Component {
         const photos = d.data;
         const albums = e.data;
         this.setState({ users, posts, comments, photos, albums });
-        console.log('users', users);
-        console.log('posts', posts);
-        console.log('comments', comments);
-        console.log('photos', photos);
+        // console.log('users', users);
+        // console.log('posts', posts);
+        // console.log('comments', comments);
+        // console.log('photos', photos);
       }));
+  }
+
+  updateTitle = (post) => {
+    console.log(post.title);
   }
 
   render() {
@@ -38,7 +42,8 @@ class MyProvider extends React.Component {
     return (
       <MyContext.Provider
         value={{
-          users, posts, comments, photos, albums
+          users, posts, comments, photos, albums,
+          updateTitle: this.updateTitle
         }}
       >
         {this.props.children}

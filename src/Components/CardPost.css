@@ -1,5 +1,17 @@
 .CardPost {
-  width: calc(100% - 350px);
-  height: 400px;
+  width: 100%;
+  max-width: 550px;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+}
 
+h5 {
+  font-size: 1.1em;
+  line-height: 26px;
+  margin-top: initial;
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 22px;
 }
